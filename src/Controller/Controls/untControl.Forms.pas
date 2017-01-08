@@ -102,27 +102,36 @@ begin
           case AReg of
             eregEmpresa:
               begin
-                Application.CreateForm(TFmRegEmpresa, FmRegEmpresa);
-                FmRegEmpresa.TypeCrud := ATypeCrud;
-                FmRegEmpresa.Index := AIndex;
-                FmRegEmpresa.ShowModal;
-                FreeAndNil(FmRegEmpresa);
+                try
+                  Application.CreateForm(TFmRegEmpresa, FmRegEmpresa);
+                  FmRegEmpresa.TypeCrud := ATypeCrud;
+                  FmRegEmpresa.Index := AIndex;
+                  FmRegEmpresa.ShowModal;
+                finally
+                  FreeAndNil(FmRegEmpresa);
+                end;
               end;
             eregBomba:
               begin
-                Application.CreateForm(TFmRegBomba, FmRegBomba);
-                FmRegBomba.TypeCrud := ATypeCrud;
-                FmRegBomba.Index := AIndex;
-                FmRegBomba.ShowModal;
-                FreeAndNil(FmRegBomba);
+                try
+                  Application.CreateForm(TFmRegBomba, FmRegBomba);
+                  FmRegBomba.TypeCrud := ATypeCrud;
+                  FmRegBomba.Index := AIndex;
+                  FmRegBomba.ShowModal;
+                finally
+                  FreeAndNil(FmRegBomba);
+                end;
               end;
             eregTanque:
               begin
-                Application.CreateForm(TFmRegTanque, FmRegTanque);
-                FmRegTanque.TypeCrud := ATypeCrud;
-                FmRegTanque.Index := AIndex;
-                FmRegTanque.ShowModal;
-                FreeAndNil(FmRegTanque);
+                try
+                  Application.CreateForm(TFmRegTanque, FmRegTanque);
+                  FmRegTanque.TypeCrud := ATypeCrud;
+                  FmRegTanque.Index := AIndex;
+                  FmRegTanque.ShowModal;
+                finally
+                  FreeAndNil(FmRegTanque);
+                end;
               end;
           end;
 
@@ -134,23 +143,32 @@ begin
           case AReg of
             eregEmpresa:
               begin
-                loBR := TBREmpresa.Create;
-                TBREmpresa(loBR).delete(AIndex);
-                FreeAndNil(loBR);
+                try
+                  loBR := TBREmpresa.Create;
+                  TBREmpresa(loBR).delete(AIndex);
+                finally
+                  FreeAndNil(loBR);
+                end;
               end;
 
             eregBomba:
               begin
-                loBR := TBRBomba.Create;
-                TBRBomba(loBR).delete(AIndex);
-                FreeAndNil(loBR);
+                try
+                  loBR := TBRBomba.Create;
+                  TBRBomba(loBR).delete(AIndex);
+                finally
+                  FreeAndNil(loBR);
+                end;
               end;
 
             eregTanque:
               begin
-                loBR := TBRBomba.Create;
-                TBRBomba(loBR).delete(AIndex);
-                FreeAndNil(loBR);
+                try
+                  loBR := TBRBomba.Create;
+                  TBRBomba(loBR).delete(AIndex);
+                finally
+                  FreeAndNil(loBR);
+                end;
               end;
 
           end;
@@ -166,9 +184,12 @@ end;
 
 function TControlForms.RunSupply: boolean;
 begin
-  Application.CreateForm(TFmAbastecimento, FmAbastecimento);
-  FmAbastecimento.ShowModal;
-  FreeAndNil(FmAbastecimento);
+  try
+    Application.CreateForm(TFmAbastecimento, FmAbastecimento);
+    FmAbastecimento.ShowModal;
+  finally
+    FreeAndNil(FmAbastecimento);
+  end;
 end;
 
 end.
