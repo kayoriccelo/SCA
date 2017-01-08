@@ -211,7 +211,8 @@ begin
 
     with TEmpresa(AObject) do
     begin
-      FQry.SQL.Text := 'update tb_empresa set CNPJ = :CNPJ, DESCRICAO = :DESCRICAO, CONTATO = :CONTATO , ENDERECO = :ENDERECO where id = ' + Id.ToString;
+      FQry.SQL.Text := 'update tb_empresa set CNPJ = :CNPJ, DESCRICAO = :DESCRICAO, CONTATO = :CONTATO , ENDERECO = :ENDERECO where id = ' +
+        Id.ToString;
       FQry.ParamByName('CNPJ').Value := Cnpj;
       FQry.ParamByName('DESCRICAO').Value := Descricao;
       FQry.ParamByName('CONTATO').Value := Contato;
@@ -376,7 +377,8 @@ begin
 
     with TTanque(AObject) do
     begin
-      FQry.SQL.Text := 'update tb_tanque set CODIGO = :CODIGO, DESCRICAO = :, TIPO = :DESCRICAO, ID_EMPRESA = :ID_EMPRESA where id = ' + Id.ToString;
+      FQry.SQL.Text := 'update tb_tanque set CODIGO = :CODIGO, DESCRICAO = :DESCRICAO, TIPO = :TIPO, ID_EMPRESA = :ID_EMPRESA where id = ' +
+        Id.ToString;
       FQry.ParamByName('CODIGO').Value := Codigo;
       FQry.ParamByName('DESCRICAO').Value := Descricao;
       FQry.ParamByName('TIPO').Value := Tipo;
@@ -577,10 +579,11 @@ begin
 
     with TAbastecimento(AObject) do
     begin
-      FQry.SQL.Text := 'insert into tb_abastecimento (CODIGO, QUANTIDADE_LITROS, VALOR, DATA, ID_BOMBA) values (:CODIGO, :QUANTIDADE_LITROS, :VALOR, :DATA, :ID_BOMBA)';
+      FQry.SQL.Text :=
+        'insert into tb_abastecimento (CODIGO, QUANTIDADE_LITROS, VALOR, DATA, ID_BOMBA) values (:CODIGO, :QUANTIDADE_LITROS, :VALOR, :DATA, :ID_BOMBA)';
       FQry.ParamByName('CODIGO').Value := Codigo;
       FQry.ParamByName('QUANTIDADE_LITROS').Value := QuantidadeLitros;
-      FQry.ParamByName('VALOR').Value :=Valor;
+      FQry.ParamByName('VALOR').Value := Valor;
       FQry.ParamByName('DATA').Value := Data;
       FQry.ParamByName('ID_BOMBA').Value := Bomba.Id;
     end;
@@ -603,7 +606,7 @@ begin
     try
       loDAOBomba := TDAOBomba.Create;
 
-      FQry.open('select * from tb_abastecimento');
+      FQry.open('select * from tb_abastecimento a left join tb_bomba b on b.id = a.id_bomba order by a.data, b.id_tanque, a.id_bomba, a.valor');
 
       Result := TList<TObject>.Create;
 
@@ -659,6 +662,7 @@ begin
         Result.Add(loAbastecimento);
         FQry.Next;
       end;
+
     except
       on E: Exception do
         raise Exception.Create('Error ao listar abastecimento' + #13 + E.message);

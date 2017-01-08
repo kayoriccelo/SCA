@@ -7,7 +7,7 @@ uses
   untValidation in '..\src\Controller\Validation\untValidation.pas',
   untDAO in '..\src\Model\DAO\untDAO.pas',
   untEntity in '..\src\Model\Entity\untEntity.pas',
-  untFmMain in '..\src\View\untFmMain.pas' {FmMain},
+  untFmPrincipal in '..\src\View\untFmPrincipal.pas' {FmMain},
   untDMConnection in '..\src\Connection\untDMConnection.pas' {DmConnection: TDataModule},
   untEnumerator in '..\src\Model\Utility\untEnumerator.pas',
   untHelper.Abastecimento in '..\src\Model\Helper\untHelper.Abastecimento.pas',

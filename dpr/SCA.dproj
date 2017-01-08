@@ -104,7 +104,7 @@
         <DCCReference Include="..\src\Controller\Validation\untValidation.pas"/>
         <DCCReference Include="..\src\Model\DAO\untDAO.pas"/>
         <DCCReference Include="..\src\Model\Entity\untEntity.pas"/>
-        <DCCReference Include="..\src\View\untFmMain.pas">
+        <DCCReference Include="..\src\View\untFmPrincipal.pas">
             <Form>FmMain</Form>
             <FormType>dfm</FormType>
         </DCCReference>
@@ -576,14 +576,14 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>

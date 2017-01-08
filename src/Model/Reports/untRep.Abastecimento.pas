@@ -27,7 +27,7 @@ type
   private
 
   protected
-    FValorTotal, FTotalLitros: Currency;
+    FValorTotal: Currency;
   public
     function Load: boolean; override;
     function Print: boolean; override;
@@ -52,6 +52,8 @@ begin
 
     FmReportAbastecimento.cdsAbastecimento.Open;
 
+    FmReportAbastecimento.cdsAbastecimento.EmptyDataSet;
+
     for loAbast in TList<TAbastecimento>(loBRAbast.list) do
     begin
       FmReportAbastecimento.cdsAbastecimento.insert;
@@ -63,7 +65,6 @@ begin
       FmReportAbastecimento.cdsAbastecimento.Post;
 
       FValorTotal := FValorTotal + loAbast.Valor;
-      FTotalLitros := FTotalLitros + loAbast.QuantidadeLitros;
     end;
 
   finally
@@ -75,8 +76,7 @@ end;
 
 function TReportAbasteccimento.Print: boolean;
 begin
-  FmReportAbastecimento.RLlblTotalLitros.Caption := FloatToStr(FTotalLitros);
-  FmReportAbastecimento.RLlblValotTotal.Caption := FloatToStr(FValorTotal);
+  FmReportAbastecimento.RLlblValotTotal.Caption := 'R$ ' + FloatToStr(FValorTotal);
   FmReportAbastecimento.RLReportAbastecimento.Preview;
 end;
 

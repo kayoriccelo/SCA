@@ -9,19 +9,8 @@ uses
 type
   TFMReportAbastecimento = class(TForm)
     RLReportAbastecimento: TRLReport;
-    RLBandCapt: TRLBand;
-    RLLabel2: TRLLabel;
-    RLLabel3: TRLLabel;
-    RLLabel4: TRLLabel;
-    RLLabel1: TRLLabel;
-    RLBandDetail: TRLBand;
     RLBandTit: TRLBand;
     RLLabel5: TRLLabel;
-    RLDBText1: TRLDBText;
-    RLDBText2: TRLDBText;
-    RLDBText3: TRLDBText;
-    RLDBText4: TRLDBText;
-    RLDraw1: TRLDraw;
     cdsAbastecimento: TClientDataSet;
     dsAbastecimento: TDataSource;
     cdsAbastecimentotanque: TStringField;
@@ -29,13 +18,21 @@ type
     cdsAbastecimentovalor: TCurrencyField;
     cdsAbastecimentodata: TDateTimeField;
     cdsAbastecimentolitros: TIntegerField;
-    RLLabel6: TRLLabel;
-    RLDBText5: TRLDBText;
     RLBand1: TRLBand;
-    RLlblTotalLitros: TRLLabel;
     RLLabel8: TRLLabel;
-    RLLabel9: TRLLabel;
     RLlblValotTotal: TRLLabel;
+    RLGroup1: TRLGroup;
+    RLBandDetail: TRLBand;
+    RLDBText1: TRLDBText;
+    RLDBText2: TRLDBText;
+    RLDBText4: TRLDBText;
+    RLDBResult1: TRLDBResult;
+    RLBandCapt: TRLBand;
+    RLPanel1: TRLPanel;
+    RLLabel2: TRLLabel;
+    RLLabel3: TRLLabel;
+    RLLabel4: TRLLabel;
+    RLLabel1: TRLLabel;
   private
     { Private declarations }
   public

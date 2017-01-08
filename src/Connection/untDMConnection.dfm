@@ -8,6 +8,7 @@ object DmConnection: TDmConnection
       'Password=masterkey'
       'Database=localhost:C:\SCA\bd\SCA.FDB'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 40
     Top = 16

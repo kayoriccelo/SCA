@@ -28,178 +28,18 @@ object FMReportAbastecimento: TFMReportAbastecimento
     Font.Height = -13
     Font.Name = 'Arial'
     Font.Style = []
-    object RLBandCapt: TRLBand
-      Left = 38
-      Top = 83
-      Width = 718
-      Height = 35
-      BandType = btColumnHeader
-      object RLLabel2: TRLLabel
-        Left = 6
-        Top = 13
-        Width = 56
-        Height = 13
-        Alignment = taCenter
-        Caption = 'TANQUE'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object RLLabel3: TRLLabel
-        Left = 214
-        Top = 13
-        Width = 48
-        Height = 13
-        Alignment = taCenter
-        Caption = 'BOMBA'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object RLLabel4: TRLLabel
-        Left = 491
-        Top = 13
-        Width = 46
-        Height = 13
-        Alignment = taCenter
-        Caption = 'VALOR'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object RLLabel1: TRLLabel
-        Left = 603
-        Top = 13
-        Width = 40
-        Height = 13
-        Alignment = taCenter
-        Caption = 'DATA'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object RLDraw1: TRLDraw
-        Left = 0
-        Top = 32
-        Width = 719
-        Height = 1
-      end
-      object RLLabel6: TRLLabel
-        Left = 421
-        Top = 13
-        Width = 50
-        Height = 13
-        Alignment = taCenter
-        Caption = 'LITROS'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-    end
-    object RLBandDetail: TRLBand
-      Left = 38
-      Top = 118
-      Width = 718
-      Height = 38
-      object RLDBText1: TRLDBText
-        Left = 6
-        Top = 16
-        Width = 202
-        Height = 13
-        DataField = 'TANQUE'
-        DataSource = dsAbastecimento
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object RLDBText2: TRLDBText
-        Left = 214
-        Top = 16
-        Width = 202
-        Height = 13
-        DataField = 'BOMBA'
-        DataSource = dsAbastecimento
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object RLDBText3: TRLDBText
-        Left = 491
-        Top = 16
-        Width = 97
-        Height = 13
-        Alignment = taCenter
-        DataField = 'VALOR'
-        DataSource = dsAbastecimento
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object RLDBText4: TRLDBText
-        Left = 606
-        Top = 16
-        Width = 99
-        Height = 13
-        DataField = 'DATA'
-        DataSource = dsAbastecimento
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object RLDBText5: TRLDBText
-        Left = 421
-        Top = 16
-        Width = 59
-        Height = 13
-        Alignment = taCenter
-        DataField = 'litros'
-        DataSource = dsAbastecimento
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-    end
     object RLBandTit: TRLBand
       Left = 38
       Top = 38
       Width = 718
       Height = 45
-      BandType = btHeader
+      BandType = btColumnHeader
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
       object RLLabel5: TRLLabel
         Left = 227
         Top = 11
@@ -216,24 +56,15 @@ object FMReportAbastecimento: TFMReportAbastecimento
     end
     object RLBand1: TRLBand
       Left = 38
-      Top = 156
+      Top = 121
       Width = 718
       Height = 53
-      BandType = btFooter
-      object RLlblTotalLitros: TRLLabel
-        Left = 412
-        Top = 32
-        Width = 84
-        Height = 13
-        Alignment = taRightJustify
-        AutoSize = False
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
-        ParentFont = False
-      end
+      BandType = btColumnFooter
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = True
+      Borders.DrawRight = False
+      Borders.DrawBottom = False
       object RLLabel8: TRLLabel
         Left = 514
         Top = 32
@@ -248,26 +79,11 @@ object FMReportAbastecimento: TFMReportAbastecimento
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel9: TRLLabel
-        Left = 290
-        Top = 32
-        Width = 116
-        Height = 13
-        Alignment = taCenter
-        Caption = 'TOTAL DE LITROS'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
       object RLlblValotTotal: TRLLabel
-        Left = 615
+        Left = 610
         Top = 32
         Width = 84
         Height = 13
-        Alignment = taRightJustify
         AutoSize = False
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -275,6 +91,150 @@ object FMReportAbastecimento: TFMReportAbastecimento
         Font.Name = 'Verdana'
         Font.Style = []
         ParentFont = False
+      end
+    end
+    object RLGroup1: TRLGroup
+      Left = 38
+      Top = 83
+      Width = 718
+      Height = 38
+      DataFields = 'tanque'
+      object RLBandDetail: TRLBand
+        Left = 0
+        Top = 18
+        Width = 718
+        Height = 22
+        object RLDBText1: TRLDBText
+          Left = 111
+          Top = 4
+          Width = 202
+          Height = 13
+          AutoSize = False
+          DataField = 'TANQUE'
+          DataSource = dsAbastecimento
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBText2: TRLDBText
+          Left = 319
+          Top = 4
+          Width = 202
+          Height = 13
+          AutoSize = False
+          DataField = 'BOMBA'
+          DataSource = dsAbastecimento
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBText4: TRLDBText
+          Left = 6
+          Top = 4
+          Width = 99
+          Height = 13
+          AutoSize = False
+          DataField = 'DATA'
+          DataSource = dsAbastecimento
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBResult1: TRLDBResult
+          Left = 527
+          Top = 3
+          Width = 69
+          Height = 16
+          DataField = 'valor'
+          DataSource = dsAbastecimento
+          Info = riSum
+          ResetAfterPrint = True
+          Text = ''
+        end
+      end
+      object RLBandCapt: TRLBand
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 18
+        BandType = btColumnHeader
+        object RLPanel1: TRLPanel
+          Left = 0
+          Top = 0
+          Width = 718
+          Height = 17
+          Color = cl3DDkShadow
+          ParentColor = False
+          Transparent = False
+        end
+        object RLLabel2: TRLLabel
+          Left = 111
+          Top = 3
+          Width = 56
+          Height = 12
+          Alignment = taCenter
+          Caption = 'TANQUE'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLLabel3: TRLLabel
+          Left = 319
+          Top = 2
+          Width = 48
+          Height = 13
+          Alignment = taCenter
+          Caption = 'BOMBA'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLLabel4: TRLLabel
+          Left = 527
+          Top = 2
+          Width = 46
+          Height = 13
+          Alignment = taCenter
+          Caption = 'VALOR'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLLabel1: TRLLabel
+          Left = 6
+          Top = 3
+          Width = 40
+          Height = 13
+          Alignment = taCenter
+          Caption = 'DATA'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
       end
     end
   end
@@ -287,7 +247,40 @@ object FMReportAbastecimento: TFMReportAbastecimento
       066C6974726F7304000100000000000000}
     Active = True
     Aggregates = <>
+    FieldDefs = <
+      item
+        Name = 'tanque'
+        DataType = ftString
+        Size = 200
+      end
+      item
+        Name = 'bomba'
+        DataType = ftString
+        Size = 200
+      end
+      item
+        Name = 'valor'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'data'
+        DataType = ftDateTime
+      end
+      item
+        Name = 'litros'
+        DataType = ftInteger
+      end>
+    IndexDefs = <
+      item
+        Name = 'DEFAULT_ORDER'
+        Fields = 'data;tanque;bomba'
+        Options = [ixDescending]
+      end
+      item
+        Name = 'CHANGEINDEX'
+      end>
     Params = <>
+    StoreDefs = True
     Left = 128
     Top = 248
     object cdsAbastecimentotanque: TStringField
