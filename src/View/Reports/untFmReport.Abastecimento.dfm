@@ -98,7 +98,7 @@ object FMReportAbastecimento: TFMReportAbastecimento
       Top = 83
       Width = 718
       Height = 38
-      DataFields = 'tanque'
+      DataFields = 'data;tanque;bomba'
       object RLBandDetail: TRLBand
         Left = 0
         Top = 18
@@ -279,6 +279,7 @@ object FMReportAbastecimento: TFMReportAbastecimento
       item
         Name = 'CHANGEINDEX'
       end>
+    IndexFieldNames = 'data;tanque;bomba'
     Params = <>
     StoreDefs = True
     Left = 128

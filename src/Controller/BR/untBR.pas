@@ -24,7 +24,8 @@ type
 
     function validate(ATypeCrud: eTypeCrud; AObject: TObject): boolean; virtual; abstract;
 
-    destructor Destroy;
+    constructor Create; virtual; abstract;
+    destructor Destroy; virtual;
   end;
 
   TBREmpresa = class(TBR)
@@ -41,7 +42,7 @@ type
 
     function validate(ATypeCrud: eTypeCrud; AObject: TObject): boolean; override;
 
-    constructor Create;
+    constructor Create; override;
 
   end;
 
@@ -59,7 +60,7 @@ type
 
     function validate(ATypeCrud: eTypeCrud; AObject: TObject): boolean; override;
 
-    constructor Create;
+    constructor Create; override;
   end;
 
   TBRBomba = class(TBR)
@@ -76,7 +77,7 @@ type
 
     function validate(ATypeCrud: eTypeCrud; AObject: TObject): boolean; override;
 
-    constructor Create;
+    constructor Create; override;
   end;
 
   TBRAbastecimento = class(TBR)
@@ -93,7 +94,7 @@ type
 
     function validate(ATypeCrud: eTypeCrud; AObject: TObject): boolean; override;
 
-    constructor Create;
+    constructor Create; override;
   end;
 
 implementation

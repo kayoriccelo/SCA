@@ -57,13 +57,26 @@ object FmAbastecimento: TFmAbastecimento
         item
           Expanded = False
           FieldName = 'VALOR'
-          Width = 80
+          Width = 60
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'IMPOSTO'
+          Width = 60
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'VALORFINAL'
+          Title.Caption = 'TOTAL'
+          Width = 59
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'BOMBA'
-          Width = 290
+          Width = 195
           Visible = True
         end>
     end
@@ -178,7 +191,10 @@ object FmAbastecimento: TFmAbastecimento
   object qryAbast: TFDQuery
     Connection = DmConnection.ConnectionSCA
     SQL.Strings = (
-      'select a.*, b.descricao as bomba from tb_abastecimento a'
+      
+        'select a.*, (a.valor +((a.valor * 30) / 100)) as valorfinal, ((a' +
+        '.valor * 30) / 100) as imposto, b.descricao as bomba from tb_aba' +
+        'stecimento a'
       'left join tb_bomba b on b.id = a.id_bomba')
     Left = 68
     Top = 336
@@ -214,6 +230,26 @@ object FmAbastecimento: TFmAbastecimento
       ProviderFlags = []
       ReadOnly = True
       Size = 200
+    end
+    object qryAbastDATA: TDateField
+      FieldName = 'DATA'
+      Origin = '"DATA"'
+    end
+    object qryAbastVALORFINAL: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'VALORFINAL'
+      Origin = 'VALORFINAL'
+      ProviderFlags = []
+      ReadOnly = True
+      Precision = 18
+    end
+    object qryAbastIMPOSTO: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'IMPOSTO'
+      Origin = 'IMPOSTO'
+      ProviderFlags = []
+      ReadOnly = True
+      Precision = 18
     end
   end
   object dsAbast: TDataSource

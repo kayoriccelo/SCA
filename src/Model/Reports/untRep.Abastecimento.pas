@@ -37,7 +37,7 @@ type
 implementation
 
 uses
-  System.SysUtils, untBR, untFmReport.Abastecimento;
+  System.SysUtils, untBR, untFmReport.Abastecimento, untHelper.Abastecimento;
 
 { TReportSupply }
 
@@ -59,7 +59,7 @@ begin
       FmReportAbastecimento.cdsAbastecimento.insert;
       FmReportAbastecimento.cdsAbastecimentotanque.Value := loAbast.Bomba.Tanque.Descricao;
       FmReportAbastecimento.cdsAbastecimentobomba.Value := loAbast.Bomba.Descricao;
-      FmReportAbastecimento.cdsAbastecimentovalor.Value := loAbast.Valor;
+      FmReportAbastecimento.cdsAbastecimentovalor.Value := loAbast.Valor + loAbast.Imposto;
       FmReportAbastecimento.cdsAbastecimentodata.Value := loAbast.Data;
       FmReportAbastecimento.cdsAbastecimentolitros.Value := loAbast.QuantidadeLitros.ToString.ToInteger;
       FmReportAbastecimento.cdsAbastecimento.Post;

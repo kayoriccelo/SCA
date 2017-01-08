@@ -4,8 +4,10 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids,
+  Vcl.ExtCtrls, Vcl.StdCtrls;
 
 type
   TFmAbastecimento = class(TForm)
@@ -32,6 +34,9 @@ type
     Label3: TLabel;
     Label4: TLabel;
     qryAbastBOMBA: TStringField;
+    qryAbastDATA: TDateField;
+    qryAbastVALORFINAL: TBCDField;
+    qryAbastIMPOSTO: TBCDField;
     procedure FormShow(Sender: TObject);
     procedure btnLancarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
@@ -49,7 +54,7 @@ implementation
 
 {$R *.dfm}
 
-uses untDMConnection, untEntity, System.Generics.Collections, untBR;
+uses untDMConnection, untEntity, System.Generics.Collections, untBR, untHelper.Abastecimento;
 
 procedure TFmAbastecimento.btnCancelarClick(Sender: TObject);
 var
@@ -89,6 +94,7 @@ begin
     loAbast.Codigo := edtCODIGO.Text;
     loAbast.QuantidadeLitros := StrToFloat(edtLITROS.Text);
     loAbast.Valor := StrToFloat(edtVALOR.Text);
+
     loAbast.Data := Now;
     loAbast.Bomba := TBomba(loBRBomba.select(cbbBOMBA.ItemIndex + 1));
 
