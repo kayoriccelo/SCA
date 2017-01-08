@@ -1,16 +1,21 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{CE38893D-1ADB-4790-9139-A52EC5D69748}</ProjectGuid>
-        <ProjectVersion>18.1</ProjectVersion>
+        <ProjectGuid>{1F65B574-2CFB-4293-9E01-3FAF12A57A96}</ProjectGuid>
+        <ProjectVersion>17.2</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
-        <MainSource>SCA.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
-        <AppType>Application</AppType>
+        <AppType>Console</AppType>
+        <MainSource>SCATest.dpr</MainSource>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='OSX32' and '$(Base)'=='true') or '$(Base_OSX32)'!=''">
+        <Base_OSX32>true</Base_OSX32>
+        <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
@@ -39,17 +44,12 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
-        <Cfg_2_Win32>true</Cfg_2_Win32>
-        <CfgParent>Cfg_2</CfgParent>
-        <Cfg_2>true</Cfg_2>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_UnitSearchPath>$(BDS)\Source\DUnit\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_Define>_CONSOLE_TESTRUNNER;$(DCC_Define)</DCC_Define>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
-        <SanitizedProjectName>SCA</SanitizedProjectName>
-        <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
+        <SanitizedProjectName>SCATest</SanitizedProjectName>
+        <DCC_DcuOutput>.</DCC_DcuOutput>
         <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
         <DCC_N>false</DCC_N>
@@ -57,16 +57,17 @@
         <DCC_F>false</DCC_F>
         <DCC_K>false</DCC_K>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_OSX32)'!=''">
+        <DCC_UsePackage>FireDACPgDriver;DBXInterBaseDriver;DataSnapServer;DataSnapCommon;DbxCommonDriver;dbxcds;CustomIPTransport;dsnap;IndyIPServer;IndyCore;CloudService;FmxTeeUI;FireDACIBDriver;dsnapxml;bindcompfmx;FireDACODBCDriver;RESTBackendComponents;dbrtl;FireDACCommon;bindcomp;inetdb;ibmonitor;xmlrtl;ibxpress;FireDACCommonDriver;soaprtl;bindengine;FMXTee;FireDACMSSQLDriver;DBXInformixDriver;DataSnapServerMidas;DBXFirebirdDriver;inet;FireDACMySQLDriver;soapmidas;DBXSybaseASADriver;RESTComponents;dbexpress;IndyIPClient;FireDACTDataDriver;FireDACSqliteDriver;FireDACDSDriver;DBXSqliteDriver;fmx;IndySystem;tethering;DataSnapClient;DataSnapProviderClient;fmxFireDAC;DBXOracleDriver;fmxase;IndyIPCommon;DataSnapFireDAC;FireDACDBXDriver;soapserver;inetdbxpress;FireDACASADriver;emsclientfiredac;rtl;DbxClientDriver;DataSnapNativeClient;IndyProtocols;DBXMySQLDriver;bindcompdbx;emsclient;FireDAC;fmxobj;FireDACOracleDriver;fmxdae;DataSnapIndy10ServerTransport;$(DCC_UsePackage)</DCC_UsePackage>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_UsePackage>DBXSqliteDriver;dxSkinBlueprintRS24;dxPSDBTeeChartRS24;dxPSdxGaugeControlLnkRS24;TWebCam;DBXDb2Driver;vclactnband;dxSpreadSheetRS24;vclFireDAC;dxDockingRS24;fs24;tethering;dxSkinVisualStudio2013BlueRS24;dxPScxTLLnkRS24;dxBarExtItemsRS24;FireDACADSDriver;dxFireDACServerModeRS24;dxPSTeeChartRS24;dxSkinOffice2007BlackRS24;FireDACMSSQLDriver;vcltouch;vcldb;Intraweb;svn;dxSkinXmas2008BlueRS24;dxSkinscxSchedulerPainterRS24;dxSkinsdxBarPainterRS24;dxSkinOffice2010BlackRS24;dxADOServerModeRS24;dxGDIPlusRS24;dxPSdxDBTVLnkRS24;frx24;vclib;dxSkinLilianRS24;frxDBX24;FireDACDBXDriver;tmsexdXE10;dxNavBarRS24;vclx;cxTreeListRS24;dxSkinDevExpressDarkStyleRS24;dxtrmdRS24;RESTBackendComponents;dxRibbonRS24;VCLRESTComponents;cxExportRS24;cxTreeListdxBarPopupMenuRS24;cxPivotGridChartRS24;dxSkinOffice2013LightGrayRS24;dxTabbedMDIRS24;vclie;dxSkinVisualStudio2013LightRS24;bindengine;CloudService;FireDACMySQLDriver;fsDB24;cxPivotGridOLAPRS24;dxSkinSharpRS24;dxSkinBlackRS24;DataSnapClient;dxPSLnksRS24;bindcompdbx;dxSkinCoffeeRS24;IndyIPServer;DBXSybaseASEDriver;dxSkinsdxRibbonPainterRS24;dxCoreRS24;IndySystem;fsIBX24;tmsxlsdXE10;dxSkinOffice2013DarkGrayRS24;dsnapcon;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;emshosting;dxBarDBNavRS24;dxSkinDarkSideRS24;dxSkinOffice2013WhiteRS24;FireDACTDataDriver;dxPSdxLCLnkRS24;FMXTee;dxPScxExtCommonRS24;dxPScxPivotGridLnkRS24;soaprtl;DbxCommonDriver;DBXOdbcDriver;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;dxSkinMcSkinRS24;rtl;dxLayoutControlRS24;DbxClientDriver;cxGridRS24;DBXSybaseASADriver;dxSkinBlueRS24;dxSpellCheckerRS24;CodeSiteExpressPkg;cxLibraryRS24;dxSkinStardustRS24;dxSkinCaramelRS24;appanalytics;dxSkinsCoreRS24;dxDBXServerModeRS24;fsTee24;dxMapControlRS24;IndyIPClient;dxSkinHighContrastRS24;bindcompvcl;dxSkinTheAsphaltWorldRS24;TeeUI;cxPageControlRS24;dxPsPrVwAdvRS24;cxEditorsRS24;dxSkinSevenClassicRS24;frxe24;VclSmp;cxSchedulerRibbonStyleEventEditorRS24;FireDACODBCDriver;dxSkinPumpkinRS24;DataSnapIndy10ServerTransport;aurelius;dxSkinscxPCPainterRS24;dxPSPrVwRibbonRS24;DataSnapProviderClient;FireDACMongoDBDriver;dxSkinSevenRS24;dxdborRS24;dxHttpIndyRequestRS24;cxSchedulerGridRS24;RESTComponents;dxmdsRS24;DataSnapServerMidas;cxPivotGridRS24;DBXInterBaseDriver;emsclientfiredac;DataSnapFireDAC;svnui;dxdbtrRS24;dxSkinMetropolisRS24;dxSkinMoneyTwinsRS24;dxPScxPCProdRS24;DBXMSSQLDriver;DatasnapConnectorsFreePascal;dxWizardControlRS24;bindcompfmx;dxPSdxOCLnkRS24;dxBarExtDBItemsRS24;DBXOracleDriver;dxPSdxFCLnkRS24;dxSkinOffice2016ColorfulRS24;cxSchedulerTreeBrowserRS24;inetdb;frxADO24;FmxTeeUI;emsedge;FireDACIBDriver;fmx;fmxdae;dxSkinSpringTimeRS24;dxSkinValentineRS24;dxSkinLondonLiquidSkyRS24;dxSkinWhiteprintRS24;dbexpress;IndyCore;dxSkiniMaginaryRS24;dxTileControlRS24;dxPSdxSpreadSheetLnkRS24;dsnap;emsclient;DataSnapCommon;cxDataRS24;FireDACCommon;dxSkinOffice2007PinkRS24;dxSkinOffice2016DarkRS24;fsADO24;DataSnapConnectors;dxSkinDevExpressStyleRS24;soapserver;dxBarRS24;dxSkinMetropolisDarkRS24;FireDACOracleDriver;DBXMySQLDriver;dxPSRichEditControlLnkRS24;DBXFirebirdDriver;dxPScxCommonRS24;FireDACCommonODBC;FireDACCommonDriver;inet;IndyIPCommon;dxSkinVS2010RS24;vcl;dxSkinSharpPlusRS24;dxPSdxDBOCLnkRS24;FireDACDb2Driver;dxThemeRS24;dxSkinOffice2007GreenRS24;TeeDB;FireDAC;dxPScxGridLnkRS24;dxPScxVGridLnkRS24;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;FireDACASADriver;dxSkinOffice2010BlueRS24;dxServerModeRS24;ibxpress;Tee;DataSnapServer;ibxbindings;cxSchedulerRS24;vclwinx;FireDACDSDriver;dxSkinsdxDLPainterRS24;dxPSCoreRS24;dxSkinOffice2007BlueRS24;frxIBX24;frxTee24;CustomIPTransport;vcldsnap;dxPScxSchedulerLnkRS24;dxRibbonCustomizationFormRS24;dxSkinGlassOceansRS24;dxSkinSummer2008RS24;dxSkinDarkRoomRS24;bindcomp;dxSkinFoggyRS24;dxorgcRS24;tmswizdXE10;DBXInformixDriver;dxSkinOffice2010SilverRS24;dxRichEditControlRS24;dxSkinsdxNavBarPainterRS24;dbxcds;adortl;dxSkinSilverRS24;dxSkinVisualStudio2013DarkRS24;dxComnRS24;dxFlowChartRS24;cxVerticalGridRS24;frxDB24;dsnapxml;dbrtl;IndyProtocols;dxGaugeControlRS24;dxSkinOffice2007SilverRS24;inetdbxpress;dxSkinLiquidSkyRS24;tmsdXE10;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
-        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <DCC_UsePackage>dxBarRS22;dxSkinsdxRibbonPainterRS22;dxSkinOffice2010BlackRS22;FireDACPgDriver;dxPScxVGridLnkRS22;DBXInterBaseDriver;DataSnapServer;DataSnapCommon;dxWizardControlRS22;DbxCommonDriver;vclimg;dbxcds;dxServerModeRS22;DatasnapConnectorsFreePascal;appanalytics;vcldb;dxSkinDarkRoomRS22;dxSkinSilverRS22;dxGDIPlusRS22;CustomIPTransport;dxSkinOffice2010SilverRS22;dsnap;IndyIPServer;IndyCore;dxSkinSummer2008RS22;CloudService;dxSkinLondonLiquidSkyRS22;FmxTeeUI;FireDACIBDriver;dxPScxPivotGridLnkRS22;dxComnRS22;cxPivotGridChartRS22;dsnapxml;dxPScxPCProdRS22;dxSpellCheckerRS22;FireDACDb2Driver;dxPScxGridLnkRS22;dxSkinVS2010RS22;dxorgcRS22;dxBarExtItemsRS22;dxRibbonRS22;dxSkinsdxBarPainterRS22;dxCoreRS22;cxVerticalGridRS22;bindcompfmx;dxSkinStardustRS22;dxSkinSevenClassicRS22;dxSkinsCoreRS22;dxSpreadSheetRS22;FireDACODBCDriver;RESTBackendComponents;cxSchedulerRS22;dbrtl;dxSkinDevExpressStyleRS22;FireDACCommon;bindcomp;inetdb;cxExportRS22;dxPSDBTeeChartRS22;dxSkinOffice2007BlackRS22;dxSkinXmas2008BlueRS22;dxSkinCoffeeRS22;DBXOdbcDriver;dxSkinscxSchedulerPainterRS22;ibmonitor;vclFireDAC;xmlrtl;ibxpress;dxSkinOffice2013WhiteRS22;dxPSdxDBOCLnkRS22;cxDataRS22;FireDACCommonDriver;cxBarEditItemRS22;soaprtl;bindengine;vclactnband;FMXTee;bindcompvcl;dxBarExtDBItemsRS22;dxSkinOffice2010BlueRS22;vclie;dxPSdxDBTVLnkRS22;cxPageControlRS22;dxPsPrVwAdvRS22;FireDACMSSQLDriver;DBXInformixDriver;dxSkinFoggyRS22;Intraweb;dxSkinPumpkinRS22;cxEditorsRS22;dxPScxExtCommonRS22;DataSnapServerMidas;dsnapcon;DBXFirebirdDriver;dxMapControlRS22;inet;dxPSPrVwRibbonRS22;dxSkinSharpRS22;dxmdsRS22;FireDACMySQLDriver;soapmidas;vclx;dxSkinOffice2007GreenRS22;dxSkinMetropolisDarkRS22;DBXSybaseASADriver;dxDockingRS22;RESTComponents;dxTabbedMDIRS22;dxdborRS22;dxSkinMoneyTwinsRS22;dbexpress;dxPScxTLLnkRS22;IndyIPClient;dxSkinSpringTimeRS22;FireDACTDataDriver;FireDACSqliteDriver;FireDACDSDriver;DBXSqliteDriver;dxSkinHighContrastRS22;dxSkinOffice2007SilverRS22;fmx;dxPSdxFCLnkRS22;dxLayoutControlRS22;IndySystem;dxSkinOffice2007PinkRS22;TeeDB;tethering;cxSchedulerGridRS22;dxSkinMcSkinRS22;vclib;DataSnapClient;dxSkinsdxNavBarPainterRS22;dxNavBarRS22;DataSnapProviderClient;DBXSybaseASEDriver;DUnitXRuntime;dxSkinGlassOceansRS22;dxSkinBlueprintRS22;dxSkinBlueRS22;vcldsnap;dxBarDBNavRS22;dxSkiniMaginaryRS22;dxPSCoreRS22;dxSkinLiquidSkyRS22;fmxFireDAC;DBXDb2Driver;dxSkinOffice2007BlueRS22;frce;dxSkinCaramelRS22;DBXOracleDriver;cxGridRS22;vclribbon;fmxase;vcl;DBXMSSQLDriver;IndyIPCommon;dxThemeRS22;CodeSiteExpressPkg;DataSnapFireDAC;FireDACDBXDriver;cxPivotGridRS22;dxtrmdRS22;soapserver;dxPScxSchedulerLnkRS22;dxSkinscxPCPainterRS22;inetdbxpress;FireDACInfxDriver;dxFireDACServerModeRS22;adortl;cxLibraryRS22;dxPSdxSpreadSheetLnkRS22;dxPSdxLCLnkRS22;FireDACASADriver;dxSkinOffice2013DarkGrayRS22;dxPScxCommonRS22;emsclientfiredac;rtl;DbxClientDriver;dxSkinOffice2013LightGrayRS22;Tee;dxFlowChartRS22;dxPSLnksRS22;dxSkinSharpPlusRS22;dxSkinDarkSideRS22;DataSnapNativeClient;svnui;cxTreeListdxBarPopupMenuRS22;dxSkinsdxDLPainterRS22;dxSkinDevExpressDarkStyleRS22;dxSkinMetropolisRS22;IndyProtocols;DBXMySQLDriver;dxSkinValentineRS22;dxPSdxOCLnkRS22;bindcompdbx;TeeUI;cxTreeListRS22;dxSkinTheAsphaltWorldRS22;FireDACADSDriver;vcltouch;dxADOServerModeRS22;emsclient;dxdbtrRS22;VclSmp;FireDAC;VCLRESTComponents;cxSchedulerRibbonStyleEventEditorRS22;dxTileControlRS22;dxSkinSevenRS22;DataSnapConnectors;dxSkinBlackRS22;fmxobj;dxSkinWhiteprintRS22;dxPSTeeChartRS22;cxPivotGridOLAPRS22;svn;cxSchedulerTreeBrowserRS22;FireDACOracleDriver;fmxdae;FireDACMSAccDriver;DataSnapIndy10ServerTransport;$(DCC_UsePackage)</DCC_UsePackage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
-        <DCC_UsePackage>DBXSqliteDriver;dxSkinBlueprintRS24;dxPSDBTeeChartRS24;dxPSdxGaugeControlLnkRS24;DBXDb2Driver;vclactnband;dxSpreadSheetRS24;vclFireDAC;dxDockingRS24;tethering;dxSkinVisualStudio2013BlueRS24;dxPScxTLLnkRS24;dxBarExtItemsRS24;FireDACADSDriver;dxFireDACServerModeRS24;dxPSTeeChartRS24;dxSkinOffice2007BlackRS24;FireDACMSSQLDriver;vcltouch;vcldb;Intraweb;dxSkinXmas2008BlueRS24;dxSkinscxSchedulerPainterRS24;dxSkinsdxBarPainterRS24;dxSkinOffice2010BlackRS24;dxADOServerModeRS24;dxGDIPlusRS24;dxPSdxDBTVLnkRS24;vclib;dxSkinLilianRS24;FireDACDBXDriver;dxNavBarRS24;vclx;cxTreeListRS24;dxSkinDevExpressDarkStyleRS24;dxtrmdRS24;RESTBackendComponents;dxRibbonRS24;VCLRESTComponents;cxExportRS24;cxTreeListdxBarPopupMenuRS24;cxPivotGridChartRS24;dxSkinOffice2013LightGrayRS24;dxTabbedMDIRS24;vclie;dxSkinVisualStudio2013LightRS24;bindengine;CloudService;FireDACMySQLDriver;cxPivotGridOLAPRS24;dxSkinSharpRS24;dxSkinBlackRS24;DataSnapClient;dxPSLnksRS24;bindcompdbx;dxSkinCoffeeRS24;IndyIPServer;DBXSybaseASEDriver;dxSkinsdxRibbonPainterRS24;dxCoreRS24;IndySystem;dxSkinOffice2013DarkGrayRS24;dsnapcon;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;emshosting;dxBarDBNavRS24;dxSkinDarkSideRS24;dxSkinOffice2013WhiteRS24;FireDACTDataDriver;dxPSdxLCLnkRS24;FMXTee;dxPScxExtCommonRS24;dxPScxPivotGridLnkRS24;soaprtl;DbxCommonDriver;DBXOdbcDriver;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;dxSkinMcSkinRS24;rtl;dxLayoutControlRS24;DbxClientDriver;cxGridRS24;DBXSybaseASADriver;dxSkinBlueRS24;dxSpellCheckerRS24;cxLibraryRS24;dxSkinStardustRS24;dxSkinCaramelRS24;appanalytics;dxSkinsCoreRS24;dxDBXServerModeRS24;dxMapControlRS24;IndyIPClient;dxSkinHighContrastRS24;bindcompvcl;dxSkinTheAsphaltWorldRS24;TeeUI;cxPageControlRS24;dxPsPrVwAdvRS24;cxEditorsRS24;dxSkinSevenClassicRS24;VclSmp;cxSchedulerRibbonStyleEventEditorRS24;FireDACODBCDriver;dxSkinPumpkinRS24;DataSnapIndy10ServerTransport;aurelius;dxSkinscxPCPainterRS24;dxPSPrVwRibbonRS24;DataSnapProviderClient;FireDACMongoDBDriver;dxSkinSevenRS24;dxdborRS24;dxHttpIndyRequestRS24;cxSchedulerGridRS24;RESTComponents;dxmdsRS24;DataSnapServerMidas;cxPivotGridRS24;DBXInterBaseDriver;emsclientfiredac;DataSnapFireDAC;dxdbtrRS24;dxSkinMetropolisRS24;dxSkinMoneyTwinsRS24;dxPScxPCProdRS24;DBXMSSQLDriver;DatasnapConnectorsFreePascal;dxWizardControlRS24;bindcompfmx;dxPSdxOCLnkRS24;dxBarExtDBItemsRS24;DBXOracleDriver;dxPSdxFCLnkRS24;dxSkinOffice2016ColorfulRS24;cxSchedulerTreeBrowserRS24;inetdb;FmxTeeUI;emsedge;FireDACIBDriver;fmx;fmxdae;dxSkinSpringTimeRS24;dxSkinValentineRS24;dxSkinLondonLiquidSkyRS24;dxSkinWhiteprintRS24;dbexpress;IndyCore;dxSkiniMaginaryRS24;dxTileControlRS24;dxPSdxSpreadSheetLnkRS24;dsnap;emsclient;DataSnapCommon;cxDataRS24;FireDACCommon;dxSkinOffice2007PinkRS24;dxSkinOffice2016DarkRS24;DataSnapConnectors;dxSkinDevExpressStyleRS24;soapserver;dxBarRS24;dxSkinMetropolisDarkRS24;FireDACOracleDriver;DBXMySQLDriver;dxPSRichEditControlLnkRS24;DBXFirebirdDriver;dxPScxCommonRS24;FireDACCommonODBC;FireDACCommonDriver;inet;IndyIPCommon;dxSkinVS2010RS24;vcl;dxSkinSharpPlusRS24;dxPSdxDBOCLnkRS24;FireDACDb2Driver;dxThemeRS24;dxSkinOffice2007GreenRS24;TeeDB;FireDAC;dxPScxGridLnkRS24;dxPScxVGridLnkRS24;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;FireDACASADriver;dxSkinOffice2010BlueRS24;dxServerModeRS24;ibxpress;Tee;DataSnapServer;ibxbindings;cxSchedulerRS24;vclwinx;FireDACDSDriver;dxSkinsdxDLPainterRS24;dxPSCoreRS24;dxSkinOffice2007BlueRS24;CustomIPTransport;vcldsnap;dxPScxSchedulerLnkRS24;dxRibbonCustomizationFormRS24;dxSkinGlassOceansRS24;dxSkinSummer2008RS24;dxSkinDarkRoomRS24;bindcomp;dxSkinFoggyRS24;dxorgcRS24;DBXInformixDriver;dxSkinOffice2010SilverRS24;dxRichEditControlRS24;dxSkinsdxNavBarPainterRS24;dbxcds;adortl;dxSkinSilverRS24;dxSkinVisualStudio2013DarkRS24;dxComnRS24;dxFlowChartRS24;cxVerticalGridRS24;dsnapxml;dbrtl;IndyProtocols;dxGaugeControlRS24;dxSkinOffice2007SilverRS24;inetdbxpress;dxSkinLiquidSkyRS24;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>dxBarRS22;dxSkinsdxRibbonPainterRS22;dxSkinOffice2010BlackRS22;FireDACPgDriver;dxPScxVGridLnkRS22;DBXInterBaseDriver;DataSnapServer;DataSnapCommon;dxWizardControlRS22;DbxCommonDriver;vclimg;dbxcds;dxServerModeRS22;DatasnapConnectorsFreePascal;appanalytics;vcldb;dxSkinDarkRoomRS22;dxSkinSilverRS22;dxGDIPlusRS22;CustomIPTransport;dxSkinOffice2010SilverRS22;dsnap;IndyIPServer;IndyCore;dxSkinSummer2008RS22;CloudService;dxSkinLondonLiquidSkyRS22;FmxTeeUI;FireDACIBDriver;dxPScxPivotGridLnkRS22;dxComnRS22;cxPivotGridChartRS22;dsnapxml;dxPScxPCProdRS22;dxSpellCheckerRS22;FireDACDb2Driver;dxPScxGridLnkRS22;dxSkinVS2010RS22;dxorgcRS22;dxBarExtItemsRS22;dxRibbonRS22;dxSkinsdxBarPainterRS22;dxCoreRS22;cxVerticalGridRS22;bindcompfmx;dxSkinStardustRS22;dxSkinSevenClassicRS22;dxSkinsCoreRS22;dxSpreadSheetRS22;FireDACODBCDriver;RESTBackendComponents;cxSchedulerRS22;dbrtl;dxSkinDevExpressStyleRS22;FireDACCommon;bindcomp;inetdb;cxExportRS22;dxPSDBTeeChartRS22;dxSkinOffice2007BlackRS22;dxSkinXmas2008BlueRS22;dxSkinCoffeeRS22;DBXOdbcDriver;dxSkinscxSchedulerPainterRS22;ibmonitor;vclFireDAC;xmlrtl;ibxpress;dxSkinOffice2013WhiteRS22;dxPSdxDBOCLnkRS22;cxDataRS22;FireDACCommonDriver;cxBarEditItemRS22;soaprtl;bindengine;vclactnband;FMXTee;bindcompvcl;dxBarExtDBItemsRS22;dxSkinOffice2010BlueRS22;vclie;dxPSdxDBTVLnkRS22;cxPageControlRS22;dxPsPrVwAdvRS22;FireDACMSSQLDriver;DBXInformixDriver;dxSkinFoggyRS22;Intraweb;dxSkinPumpkinRS22;cxEditorsRS22;dxPScxExtCommonRS22;DataSnapServerMidas;dsnapcon;DBXFirebirdDriver;dxMapControlRS22;inet;dxPSPrVwRibbonRS22;dxSkinSharpRS22;dxmdsRS22;FireDACMySQLDriver;soapmidas;vclx;dxSkinOffice2007GreenRS22;dxSkinMetropolisDarkRS22;DBXSybaseASADriver;dxDockingRS22;RESTComponents;dxTabbedMDIRS22;dxdborRS22;dxSkinMoneyTwinsRS22;dbexpress;dxPScxTLLnkRS22;IndyIPClient;dxSkinSpringTimeRS22;FireDACTDataDriver;FireDACSqliteDriver;FireDACDSDriver;DBXSqliteDriver;dxSkinHighContrastRS22;dxSkinOffice2007SilverRS22;fmx;dxPSdxFCLnkRS22;dxLayoutControlRS22;IndySystem;dxSkinOffice2007PinkRS22;TeeDB;tethering;cxSchedulerGridRS22;dxSkinMcSkinRS22;vclib;DataSnapClient;dxSkinsdxNavBarPainterRS22;dxNavBarRS22;DataSnapProviderClient;DBXSybaseASEDriver;dxSkinGlassOceansRS22;dxSkinBlueprintRS22;dxSkinBlueRS22;vcldsnap;dxBarDBNavRS22;dxSkiniMaginaryRS22;dxPSCoreRS22;dxSkinLiquidSkyRS22;fmxFireDAC;DBXDb2Driver;dxSkinOffice2007BlueRS22;dxSkinCaramelRS22;DBXOracleDriver;cxGridRS22;vclribbon;fmxase;vcl;DBXMSSQLDriver;IndyIPCommon;dxThemeRS22;DataSnapFireDAC;FireDACDBXDriver;cxPivotGridRS22;dxtrmdRS22;soapserver;dxPScxSchedulerLnkRS22;dxSkinscxPCPainterRS22;inetdbxpress;FireDACInfxDriver;dxFireDACServerModeRS22;adortl;cxLibraryRS22;dxPSdxSpreadSheetLnkRS22;dxPSdxLCLnkRS22;FireDACASADriver;dxSkinOffice2013DarkGrayRS22;dxPScxCommonRS22;emsclientfiredac;rtl;DbxClientDriver;dxSkinOffice2013LightGrayRS22;Tee;dxFlowChartRS22;dxPSLnksRS22;dxSkinSharpPlusRS22;dxSkinDarkSideRS22;DataSnapNativeClient;cxTreeListdxBarPopupMenuRS22;dxSkinsdxDLPainterRS22;dxSkinDevExpressDarkStyleRS22;dxSkinMetropolisRS22;IndyProtocols;DBXMySQLDriver;dxSkinValentineRS22;dxPSdxOCLnkRS22;bindcompdbx;TeeUI;cxTreeListRS22;dxSkinTheAsphaltWorldRS22;FireDACADSDriver;vcltouch;dxADOServerModeRS22;emsclient;dxdbtrRS22;VclSmp;FireDAC;VCLRESTComponents;cxSchedulerRibbonStyleEventEditorRS22;dxTileControlRS22;dxSkinSevenRS22;DataSnapConnectors;dxSkinBlackRS22;fmxobj;dxSkinWhiteprintRS22;dxPSTeeChartRS22;cxPivotGridOLAPRS22;cxSchedulerTreeBrowserRS22;FireDACOracleDriver;fmxdae;FireDACMSAccDriver;DataSnapIndy10ServerTransport;$(DCC_UsePackage)</DCC_UsePackage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -77,13 +78,9 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <DCC_Define>SCA;$(DCC_Define)</DCC_Define>
-        <DCC_ExeOutput>..\SCA\exe\</DCC_ExeOutput>
-        <DCC_DcuOutput>..\SCA\dcu\</DCC_DcuOutput>
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <DCC_Define> SCATest;$(DCC_Define)</DCC_Define>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <AppEnableHighDPI>true</AppEnableHighDPI>
-        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <Manifest_File>None</Manifest_File>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -92,73 +89,21 @@
         <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <AppEnableHighDPI>true</AppEnableHighDPI>
-        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-    </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="..\src\Connection\untConnection.pas"/>
+        <DCCReference Include="untTestBR.pas"/>
         <DCCReference Include="..\src\Controller\BR\untBR.pas"/>
-        <DCCReference Include="..\src\Controller\Validation\untValidation.pas"/>
         <DCCReference Include="..\src\Model\DAO\untDAO.pas"/>
+        <DCCReference Include="..\src\Model\Utility\untEnumerator.pas"/>
         <DCCReference Include="..\src\Model\Entity\untEntity.pas"/>
-        <DCCReference Include="..\src\View\untFmPrincipal.pas">
-            <Form>FmMain</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="..\src\Connection\untDMConnection.pas">
             <Form>DmConnection</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="..\src\Model\Utility\untEnumerator.pas"/>
-        <DCCReference Include="..\src\Model\Helper\untHelper.Abastecimento.pas"/>
-        <DCCReference Include="..\src\View\Listings\untFmList.pas">
-            <Form>FmList</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\src\View\Registration\untFmReg.pas">
-            <Form>FmReg</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\src\View\Listings\untFmList.Empresa.pas">
-            <Form>FmListEmpresa</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\src\View\Listings\untFmList.Tanque.pas">
-            <Form>FmListTanque</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\src\View\Listings\untFmList.Bomba.pas">
-            <Form>FmListBomba</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\src\View\Registration\untFmReg.Empresa.pas">
-            <Form>FmRegEmpresa</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\src\View\Registration\untFmReg.Tanque.pas">
-            <Form>FmRegTanque</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\src\View\Registration\untFmReg.Bomba.pas">
-            <Form>FmRegBomba</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\src\View\untFmAbastecimento.pas">
-            <Form>FmAbastecimento</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\src\Controller\Controls\untControl.Forms.pas"/>
-        <DCCReference Include="..\src\Controller\Controls\untControl.Reports.pas"/>
-        <DCCReference Include="..\src\Model\Reports\untRep.Abastecimento.pas"/>
-        <DCCReference Include="..\src\View\Reports\untFmReport.Abastecimento.pas">
-            <Form>FMReportAbastecimento</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
+        <DCCReference Include="..\src\Controller\Validation\untValidation.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -177,7 +122,7 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">SCA.dpr</Source>
+                    <Source Name="MainSource">SCATest.dpr</Source>
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k220.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
@@ -189,45 +134,22 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="1">
-                <DeployFile LocalName="Win32\Debug\SCA.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="Win32\Debug\SCATest.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>SCA.exe</RemoteName>
+                        <RemoteName>SCATest.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="Android_SplashImage470">
-                    <Platform Name="Android">
-                        <RemoteDir>res\drawable-normal</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectOSXInfoPList">
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents</RemoteDir>
-                        <Operation>1</Operation>
+                        <Overwrite>true</Overwrite>
                     </Platform>
-                </DeployClass>
-                <DeployClass Name="iPad_Launch2048">
-                    <Platform Name="iOSDevice64">
-                        <Operation>1</Operation>
-                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossim32\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
+                        <Overwrite>true</Overwrite>
                     </Platform>
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectiOSDeviceDebug">
-                    <Platform Name="iOSDevice64">
-                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice32">
-                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
+                </DeployFile>
                 <DeployClass Required="true" Name="DependencyPackage">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
@@ -249,12 +171,6 @@
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                         <Extensions>.dylib</Extensions>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="AndroidLibnativeMipsFile">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\mips</RemoteDir>
-                        <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="DependencyModule">
@@ -280,15 +196,42 @@
                         <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="AndroidGDBServer">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                <DeployClass Name="iPad_Launch2048">
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectOSXEntitlements">
+                <DeployClass Name="ProjectOSXInfoPList">
                     <Platform Name="OSX32">
-                        <RemoteDir>../</RemoteDir>
+                        <RemoteDir>Contents</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceDebug">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage470">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-normal</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeX86File">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\x86</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -300,6 +243,18 @@
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXEntitlements">
+                    <Platform Name="OSX32">
+                        <RemoteDir>../</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidGDBServer">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -326,12 +281,6 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="Android_LauncherIcon144">
-                    <Platform Name="Android">
-                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
                 <DeployClass Name="iPhone_Launch320">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
@@ -343,9 +292,15 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="AndroidLibnativeX86File">
+                <DeployClass Name="Android_LauncherIcon144">
                     <Platform Name="Android">
-                        <RemoteDir>library\lib\x86</RemoteDir>
+                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeMipsFile">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\mips</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -355,16 +310,6 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyFramework">
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.framework</Extensions>
-                    </Platform>
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                    </Platform>
-                </DeployClass>
                 <DeployClass Name="DebugSymbols">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\MacOS</RemoteDir>
@@ -372,6 +317,16 @@
                     </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DependencyFramework">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.framework</Extensions>
                     </Platform>
                     <Platform Name="Win32">
                         <Operation>0</Operation>
@@ -431,12 +386,6 @@
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="AndroidServiceOutput">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -505,17 +454,6 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="iPhone_Launch640x1136">
-                    <Platform Name="iOSDevice64">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
                 <DeployClass Name="File">
                     <Platform Name="Android">
                         <Operation>0</Operation>
@@ -537,15 +475,26 @@
                         <Operation>0</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="AndroidSplashStyles">
-                    <Platform Name="Android">
-                        <RemoteDir>res\values</RemoteDir>
+                <DeployClass Name="iPhone_Launch640x1136">
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_LauncherIcon36">
                     <Platform Name="Android">
                         <RemoteDir>res\drawable-ldpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashStyles">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -560,15 +509,15 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="Android_LauncherIcon72">
-                    <Platform Name="Android">
-                        <RemoteDir>res\drawable-hdpi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
                 <DeployClass Name="Android_LauncherIcon48">
                     <Platform Name="Android">
                         <RemoteDir>res\drawable-mdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon72">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-hdpi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -577,20 +526,25 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
+                <Platform value="OSX32">False</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>
-            <ModelSupport>False</ModelSupport>
+            <UnitTesting>
+                <TestFramework>DUnit / Delphi Win32</TestFramework>
+                <TestRunner>GUI</TestRunner>
+                <TestProjectName/>
+                <SourceProjectName/>
+            </UnitTesting>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

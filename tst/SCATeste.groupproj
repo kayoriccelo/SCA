@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{05D3C638-92AF-4138-8F37-C518F9EBEAA8}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SCATest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SCATest">
+        <MSBuild Projects="SCATest.dproj"/>
+    </Target>
+    <Target Name="SCATest:Clean">
+        <MSBuild Projects="SCATest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SCATest:Make">
+        <MSBuild Projects="SCATest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SCATest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SCATest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SCATest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

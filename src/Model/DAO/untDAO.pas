@@ -3,7 +3,7 @@ unit untDAO;
 interface
 
 uses
-  System.Generics.Collections, FireDAC.Comp.Client;
+  System.Generics.Collections, FireDAC.Comp.Client, untEnumerator;
 
 type
 
@@ -23,6 +23,8 @@ type
 
     constructor Create;
     destructor Destroy;
+
+    function GetConnection(ATypeProject: eTypeProject): TFDConnection;
 
   end;
 
@@ -606,7 +608,8 @@ begin
     try
       loDAOBomba := TDAOBomba.Create;
 
-      FQry.open('select * from tb_abastecimento a left join tb_bomba b on b.id = a.id_bomba order by a.data, b.id_tanque, a.id_bomba, a.valor');
+      FQry.open(
+        'select * from tb_abastecimento a left join tb_bomba b on b.id = a.id_bomba order by a.data, b.id_tanque, a.id_bomba, a.valor');
 
       Result := TList<TObject>.Create;
 
@@ -711,12 +714,34 @@ end;
 constructor TDAO.Create;
 begin
   FQry := TFDQuery.Create(nil);
-  FQry.Connection := DmConnection.ConnectionSCA;
+{$IFDEF SCA}
+  FQry.Connection := GetConnection(etpSCA);
+{$ELSE}
+  FQry.Connection := GetConnection(etpSCATest);
+{$ENDIF}
 end;
 
 destructor TDAO.Destroy;
 begin
   FreeAndNil(FQry);
+end;
+
+function TDAO.GetConnection(ATypeProject: eTypeProject): TFDConnection;
+begin
+  case ATypeProject of
+
+    etpSCA:
+      Result := DmConnection.ConnectionSCA;
+    etpSCATest:
+      begin
+        Result := TFDConnection.Create(nil);
+        Result.DriverName := 'FB';
+        Result.Params.Database := 'localhost:C:\SCA\bd\SCA.FDB';
+        Result.Params.UserName := 'SYSDBA';
+        Result.Params.Password := 'masterkey';
+        Result.Connected := True;
+      end;
+  end;
 end;
 
 end.

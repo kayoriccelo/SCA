@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{17E6BAD7-FF49-41AA-9707-5E88676C14B7}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SCA.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\tst\SCATest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SCA">
+        <MSBuild Projects="SCA.dproj"/>
+    </Target>
+    <Target Name="SCA:Clean">
+        <MSBuild Projects="SCA.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SCA:Make">
+        <MSBuild Projects="SCA.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SCATest">
+        <MSBuild Projects="..\tst\SCATest.dproj"/>
+    </Target>
+    <Target Name="SCATest:Clean">
+        <MSBuild Projects="..\tst\SCATest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SCATest:Make">
+        <MSBuild Projects="..\tst\SCATest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SCA;SCATest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SCA:Clean;SCATest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SCA:Make;SCATest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
