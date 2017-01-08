@@ -32,10 +32,13 @@ begin
   case AReport of
     erptAbastecimento:
       begin
-        loReport := TReportAbasteccimento.Create;
-        loReport.Load;
-        loReport.Print;
-        FreeAndNil(loReport);
+        try
+          loReport := TReportAbasteccimento.Create;
+          loReport.Load;
+          loReport.Print;
+        finally
+          FreeAndNil(loReport);
+        end;
       end;
   end;
 
