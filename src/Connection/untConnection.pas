@@ -14,7 +14,7 @@ type
 
   public
 
-    function Connected(ATipo: eTipoConnection): Boolean;
+    function Connected(ATypeConnection: eTypeConnection): Boolean;
 
   published
 
@@ -27,16 +27,23 @@ uses
 
 { TConnection }
 
-function TConnection.Connected(ATipo: eTipoConnection): Boolean;
+function TConnection.Connected(ATypeConnection: eTypeConnection): Boolean;
 begin
   try
+
     with DmConnection.ConnectionSCA do
     begin
-      Connected := False;
-      Params.Database := 'localhost:C:\SCA\bd\SCA.FDB';
-      Params.UserName := 'SYSDBA';
-      Params.Password := 'masterkey';
-      Connected := True;
+      case ATypeConnection of
+        etcFireBird:
+          begin
+            Connected := False;
+            Params.Database := 'localhost:C:\SCA\bd\SCA.FDB';
+            Params.UserName := 'SYSDBA';
+            Params.Password := 'masterkey';
+            Connected := True;
+          end;
+      end;
+
     end;
 
   except

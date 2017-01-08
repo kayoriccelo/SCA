@@ -5,7 +5,7 @@ interface
 type
 
   eTypeProject = (etpSCA, etpSCATest);
-  eTipoConnection = (etcFireBird);
+  eTypeConnection = (etcFireBird);
   eTypeCrud = (etcdInsert, etcdUpdate, etcdDelete);
   eList = (elstEmpresa, elstBomba, elstTanque);
   eRegistration = (eregEmpresa, eregBomba, eregTanque);
