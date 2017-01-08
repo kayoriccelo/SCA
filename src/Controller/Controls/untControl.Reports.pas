@@ -20,7 +20,7 @@ var
 implementation
 
 uses
-  untRep.Supply, System.SysUtils;
+  untRep.Abastecimento, System.SysUtils;
 
 { TControlReports }
 
@@ -32,7 +32,7 @@ begin
   case AReport of
     erptAbastecimento:
       begin
-        loReport := TReportSupply.Create;
+        loReport := TReportAbasteccimento.Create;
         loReport.Load;
         loReport.Print;
         FreeAndNil(loReport);

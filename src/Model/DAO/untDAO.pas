@@ -107,8 +107,14 @@ begin
     Result := True;
 
     with TEmpresa(AObject) do
-      FQry.SQL.Text := 'insert into tb_empresa (CNPJ, DESCRICAO, CONTATO, ENDERECO) values (' + QuotedStr(Cnpj) + ',' + QuotedStr(Descricao) + ',' +
-        QuotedStr(Contato) + ',' + QuotedStr(Endereco) + ')';
+    begin
+      FQry.SQL.Text := 'insert into tb_empresa (CNPJ, DESCRICAO, CONTATO, ENDERECO) values (:CNPJ, :DESCRICAO, :CONTATO, :ENDERECO)';
+      FQry.ParamByName('CNPJ').Value := Cnpj;
+      FQry.ParamByName('DESCRICAO').Value := Descricao;
+      FQry.ParamByName('CONTATO').Value := Contato;
+      FQry.ParamByName('ENDERECO').Value := Endereco;
+    end;
+
     FQry.ExecSQL;
   except
     on E: Exception do
@@ -204,8 +210,13 @@ begin
     Result := True;
 
     with TEmpresa(AObject) do
-      FQry.SQL.Text := 'update tb_empresa set CNPJ = ' + QuotedStr(Cnpj) + ', DESCRICAO = ' + QuotedStr(Descricao) + ', CONTATO = ' + QuotedStr(Contato) +
-        ', ENDERECO = ' + QuotedStr(Endereco) + ' where id = ' + Id.ToString;
+    begin
+      FQry.SQL.Text := 'update tb_empresa set CNPJ = :CNPJ, DESCRICAO = :DESCRICAO, CONTATO = :CONTATO , ENDERECO = :ENDERECO where id = ' + Id.ToString;
+      FQry.ParamByName('CNPJ').Value := Cnpj;
+      FQry.ParamByName('DESCRICAO').Value := Descricao;
+      FQry.ParamByName('CONTATO').Value := Contato;
+      FQry.ParamByName('ENDERECO').Value := Endereco;
+    end;
     FQry.ExecSQL;
   except
 
@@ -241,8 +252,13 @@ begin
     Result := True;
 
     with TTanque(AObject) do
-      FQry.SQL.Text := 'insert into tb_tanque (CODIGO, DESCRICAO, TIPO, ID_EMPRESA) values (' + QuotedStr(Codigo) + ',' + QuotedStr(Descricao) + ',' +
-        QuotedStr(Tipo.ToString) + ',' + QuotedStr(Empresa.Id.ToString) + ')';
+    begin
+      FQry.SQL.Text := 'insert into tb_tanque (CODIGO, DESCRICAO, TIPO, ID_EMPRESA) values (:CODIGO, :DESCRICAO, :TIPO, :ID_EMPRESA)';
+      FQry.ParamByName('CODIGO').Value := Codigo;
+      FQry.ParamByName('DESCRICAO').Value := Descricao;
+      FQry.ParamByName('TIPO').Value := Tipo;
+      FQry.ParamByName('ID_EMPRESA').Value := Empresa.Id;
+    end;
     FQry.ExecSQL;
   except
     on E: Exception do
@@ -359,8 +375,13 @@ begin
     Result := True;
 
     with TTanque(AObject) do
-      FQry.SQL.Text := 'update tb_tanque set CODIGO = ' + QuotedStr(Codigo) + ', DESCRICAO = ' + QuotedStr(Descricao) + ', TIPO = ' + QuotedStr(Tipo.ToString) +
-        ', ID_EMPRESA = ' + QuotedStr(Empresa.Id.ToString) + ' where id = ' + Id.ToString;
+    begin
+      FQry.SQL.Text := 'update tb_tanque set CODIGO = :CODIGO, DESCRICAO = :, TIPO = :DESCRICAO, ID_EMPRESA = :ID_EMPRESA where id = ' + Id.ToString;
+      FQry.ParamByName('CODIGO').Value := Codigo;
+      FQry.ParamByName('DESCRICAO').Value := Descricao;
+      FQry.ParamByName('TIPO').Value := Tipo;
+      FQry.ParamByName('ID_EMPRESA').Value := Empresa.Id;
+    end;
     FQry.ExecSQL;
   except
     on E: Exception do
@@ -395,8 +416,12 @@ begin
     Result := True;
 
     with TBomba(AObject) do
-      FQry.SQL.Text := 'insert into tb_bomba (CODIGO, DESCRICAO, ID_TANQUE) values (' + QuotedStr(Codigo) + ',' + QuotedStr(Descricao) + ',' +
-        QuotedStr(Tanque.Id.ToString) + ')';
+    begin
+      FQry.SQL.Text := 'insert into tb_bomba (CODIGO, DESCRICAO, ID_TANQUE) values (:CODIGO,:DESCRICAO,:ID_TANQUE)';
+      FQry.ParamByName('CODIGO').Value := Codigo;
+      FQry.ParamByName('DESCRICAO').Value := Descricao;
+      FQry.ParamByName('ID_TANQUE').Value := Tanque.Id;
+    end;
     FQry.ExecSQL;
   except
     on E: Exception do
@@ -511,8 +536,12 @@ begin
     Result := True;
 
     with TBomba(AObject) do
-      FQry.SQL.Text := 'update tb_bomba set CODIGO = ' + QuotedStr(Codigo) + ', DESCRICAO = ' + QuotedStr(Descricao) + ', ID_TANQUE = ' +
-        QuotedStr(Tanque.Id.ToString) + ' where id = ' + Id.ToString;
+    begin
+      FQry.SQL.Text := 'update tb_bomba set CODIGO = :CODIGO, DESCRICAO = :DESCRICAO, ID_TANQUE = :ID_TANQUE where id = ' + Id.ToString;
+      FQry.ParamByName('CODIGO').Value := Codigo;
+      FQry.ParamByName('DESCRICAO').Value := Descricao;
+      FQry.ParamByName('ID_TANQUE').Value := Tanque.Id;
+    end;
     FQry.ExecSQL;
   except
     on E: Exception do
@@ -548,10 +577,12 @@ begin
 
     with TAbastecimento(AObject) do
     begin
-      FQry.SQL.Text := 'insert into tb_abastecimento (CODIGO, QUANTIDADE_LITROS, VALOR, DATA, ID_BOMBA) values (' + QuotedStr(Codigo) + ',' +
-        QuotedStr(QuantidadeLitros.ToString) + ', :Valor, :Data,' + QuotedStr(Bomba.Id.ToString) + ')';
-      FQry.ParamByName('Valor').Value := Valor;
-      FQry.ParamByName('Data').Value := Data;
+      FQry.SQL.Text := 'insert into tb_abastecimento (CODIGO, QUANTIDADE_LITROS, VALOR, DATA, ID_BOMBA) values (:CODIGO, :QUANTIDADE_LITROS, :VALOR, :DATA, :ID_BOMBA)';
+      FQry.ParamByName('CODIGO').Value := Codigo;
+      FQry.ParamByName('QUANTIDADE_LITROS').Value := QuantidadeLitros;
+      FQry.ParamByName('VALOR').Value :=Valor;
+      FQry.ParamByName('DATA').Value := Data;
+      FQry.ParamByName('ID_BOMBA').Value := Bomba.Id;
     end;
     FQry.ExecSQL;
   except

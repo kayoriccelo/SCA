@@ -33,7 +33,7 @@ begin
     with DmConnection.ConnectionSCA do
     begin
       Connected := False;
-      Params.Database := 'K:\SCA\bd\SCA.FDB';
+      Params.Database := 'localhost:C:\SCA\bd\SCA.FDB';
       Params.UserName := 'SYSDBA';
       Params.Password := 'masterkey';
       Connected := True;

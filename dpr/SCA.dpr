@@ -13,17 +13,17 @@ uses
   untHelper.Abastecimento in '..\src\Model\Helper\untHelper.Abastecimento.pas',
   untFmList in '..\src\View\Listings\untFmList.pas' {FmList},
   untFmReg in '..\src\View\Registration\untFmReg.pas' {FmReg},
-  untFmListEmpresa in '..\src\View\Listings\untFmListEmpresa.pas' {FmListEmpresa},
-  untFmListTanque in '..\src\View\Listings\untFmListTanque.pas' {FmListTanque},
-  untFmListBomba in '..\src\View\Listings\untFmListBomba.pas' {FmListBomba},
-  untFmRegEmpresa in '..\src\View\Registration\untFmRegEmpresa.pas' {FmRegEmpresa},
-  untFmRegTanque in '..\src\View\Registration\untFmRegTanque.pas' {FmRegTanque},
-  untFmRegBomba in '..\src\View\Registration\untFmRegBomba.pas' {FmRegBomba},
-  untFmSupply in '..\src\View\untFmSupply.pas' {FmSupply},
+  untFmList.Empresa in '..\src\View\Listings\untFmList.Empresa.pas' {FmListEmpresa},
+  untFmList.Tanque in '..\src\View\Listings\untFmList.Tanque.pas' {FmListTanque},
+  untFmList.Bomba in '..\src\View\Listings\untFmList.Bomba.pas' {FmListBomba},
+  untFmReg.Empresa in '..\src\View\Registration\untFmReg.Empresa.pas' {FmRegEmpresa},
+  untFmReg.Tanque in '..\src\View\Registration\untFmReg.Tanque.pas' {FmRegTanque},
+  untFmReg.Bomba in '..\src\View\Registration\untFmReg.Bomba.pas' {FmRegBomba},
+  untFmAbastecimento in '..\src\View\untFmAbastecimento.pas' {FmAbastecimento},
   untControl.Forms in '..\src\Controller\Controls\untControl.Forms.pas',
   untControl.Reports in '..\src\Controller\Controls\untControl.Reports.pas',
-  untRep.Supply in '..\src\Model\Reports\untRep.Supply.pas',
-  untFmReport.Supply in '..\src\View\Reports\untFmReport.Supply.pas' {FMReportSupply};
+  untRep.Abastecimento in '..\src\Model\Reports\untRep.Abastecimento.pas',
+  untFmReport.Abastecimento in '..\src\View\Reports\untFmReport.Abastecimento.pas' {FMReportAbastecimento};
 
 {$R *.res}
 
@@ -32,7 +32,7 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDmConnection, DmConnection);
   Application.CreateForm(TFmMain, FmMain);
-  Application.CreateForm(TFmSupply, FmSupply);
-  Application.CreateForm(TFMReportSupply, FMReportSupply);
+  Application.CreateForm(TFmAbastecimento, FmAbastecimento);
+  Application.CreateForm(TFMReportAbastecimento, FMReportAbastecimento);
   Application.Run;
 end.

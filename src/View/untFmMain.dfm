@@ -18,13 +18,6 @@ object FmMain: TFmMain
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
-  object StatusBar1: TStatusBar
-    Left = 0
-    Top = 422
-    Width = 688
-    Height = 19
-    Panels = <>
-  end
   object mmMain: TMainMenu
     Left = 56
     Top = 24

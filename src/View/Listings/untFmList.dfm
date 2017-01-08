@@ -1,11 +1,10 @@
 object FmList: TFmList
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Listagem'
-  ClientHeight = 461
-  ClientWidth = 639
+  ClientHeight = 471
+  ClientWidth = 649
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,7 +15,6 @@ object FmList: TFmList
   KeyPreview = True
   OldCreateOrder = False
   Position = poMainFormCenter
-  Visible = True
   WindowState = wsMaximized
   OnClose = FormClose
   OnKeyDown = FormKeyDown
@@ -27,8 +25,8 @@ object FmList: TFmList
     AlignWithMargins = True
     Left = 3
     Top = 114
-    Width = 633
-    Height = 303
+    Width = 643
+    Height = 313
     Align = alClient
     DataSource = dsList
     TabOrder = 0
@@ -41,34 +39,38 @@ object FmList: TFmList
   object pnlButtons: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 423
-    Width = 633
+    Top = 433
+    Width = 643
     Height = 35
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 423
+    ExplicitWidth = 633
     object btnInsert: TBitBtn
       AlignWithMargins = True
-      Left = 311
+      Left = 321
       Top = 4
       Width = 75
       Height = 27
       Align = alRight
       Caption = 'Novo'
       TabOrder = 0
+      ExplicitLeft = 311
     end
     object btnDelete: TBitBtn
       AlignWithMargins = True
-      Left = 473
+      Left = 483
       Top = 4
       Width = 75
       Height = 27
       Align = alRight
       Caption = 'Excluir'
       TabOrder = 1
+      ExplicitLeft = 473
     end
     object btnClose: TBitBtn
       AlignWithMargins = True
-      Left = 554
+      Left = 564
       Top = 4
       Width = 75
       Height = 27
@@ -76,38 +78,40 @@ object FmList: TFmList
       Caption = 'Fechar'
       TabOrder = 2
       OnClick = btnCloseClick
+      ExplicitLeft = 554
     end
     object btnUpdt: TButton
       AlignWithMargins = True
-      Left = 392
+      Left = 402
       Top = 4
       Width = 75
       Height = 27
       Align = alRight
       Caption = 'Alterar'
       TabOrder = 3
-      ExplicitLeft = 399
-      ExplicitTop = 0
+      ExplicitLeft = 392
     end
   end
   object edtSearch: TEdit
     AlignWithMargins = True
     Left = 3
     Top = 87
-    Width = 633
+    Width = 643
     Height = 21
     Align = alTop
     TabOrder = 2
+    ExplicitWidth = 633
   end
   object rdgrpFilter: TRadioGroup
     AlignWithMargins = True
     Left = 3
     Top = 3
-    Width = 633
+    Width = 643
     Height = 78
     Align = alTop
     Caption = ' Filtro '
     TabOrder = 3
+    ExplicitWidth = 633
   end
   object qryList: TFDQuery
     Left = 464

@@ -16,7 +16,6 @@ type
     anque1: TMenuItem;
     Bomba1: TMenuItem;
     Abastecimento1: TMenuItem;
-    StatusBar1: TStatusBar;
     Relatrios1: TMenuItem;
     Abastecimento2: TMenuItem;
     procedure FormCreate(Sender: TObject);

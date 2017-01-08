@@ -4,23 +4,13 @@ object DmConnection: TDmConnection
   Width = 342
   object ConnectionSCA: TFDConnection
     Params.Strings = (
-      'User_Name=sysdba'
+      'User_Name=SYSDBA'
       'Password=masterkey'
-      'Database=K:\SCA\bd\SCA.FDB'
+      'Database=localhost:C:\SCA\bd\SCA.FDB'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 40
     Top = 16
-  end
-  object FDPhysFBDriverLink1: TFDPhysFBDriverLink
-    Left = 168
-    Top = 16
-  end
-  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
-    Provider = 'Forms'
-    Left = 256
-    Top = 32
   end
   object tbEmpresa: TFDTable
     IndexFieldNames = 'ID'
@@ -97,5 +87,14 @@ object DmConnection: TDmConnection
     DataSet = tbTanque
     Left = 176
     Top = 176
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 248
+    Top = 8
+  end
+  object FDPhysFBDriverLink1: TFDPhysFBDriverLink
+    Left = 256
+    Top = 112
   end
 end

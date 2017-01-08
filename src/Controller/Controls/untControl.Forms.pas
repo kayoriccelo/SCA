@@ -26,9 +26,9 @@ var
 implementation
 
 uses
-  Vcl.Forms, untFmList, untFmListBomba, untFmListEmpresa, untFmListTanque,
-  System.SysUtils, untFmRegEmpresa, untFmRegBomba, untFmRegTanque, untBR,
-  untFmSupply;
+  Vcl.Forms, untFmList, untFmList.Bomba, untFmList.Empresa, untFmList.Tanque,
+  System.SysUtils, untFmReg.Empresa, untFmReg.Bomba, untFmReg.Tanque, untBR,
+  untFmAbastecimento;
 
 { TControlForms }
 
@@ -75,7 +75,8 @@ begin
     for i := 0 to pred(Screen.FormCount) do
       if TFmList(Screen.Forms[i]).Name = GetFmList(AList) then
       begin
-        TFmList(Screen.Forms[i]).Show;
+        TFmList(Screen.Forms[i]).BringToFront;
+
         exit();
       end;
 
@@ -165,9 +166,9 @@ end;
 
 function TControlForms.RunSupply: boolean;
 begin
-  Application.CreateForm(TFmSupply, FmSupply);
-  FmSupply.ShowModal;
-  FreeAndNil(FmSupply);
+  Application.CreateForm(TFmAbastecimento, FmAbastecimento);
+  FmAbastecimento.ShowModal;
+  FreeAndNil(FmAbastecimento);
 end;
 
 end.

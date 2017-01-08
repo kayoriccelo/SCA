@@ -10,8 +10,6 @@ uses
 type
   TDmConnection = class(TDataModule)
     ConnectionSCA: TFDConnection;
-    FDPhysFBDriverLink1: TFDPhysFBDriverLink;
-    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     tbEmpresa: TFDTable;
     tbTanque: TFDTable;
     tbEmpresaID: TIntegerField;
@@ -26,6 +24,8 @@ type
     tbTanqueID_EMPRESA: TIntegerField;
     dsEmpresa: TDataSource;
     dsTanque: TDataSource;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
+    FDPhysFBDriverLink1: TFDPhysFBDriverLink;
   private
     { Private declarations }
   public
