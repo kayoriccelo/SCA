@@ -52,7 +52,7 @@ object FmReg: TFmReg
     end
   end
   object qryReg: TFDQuery
-    Connection = DmConnection.ConnectionSCA
+    Connection = DmConnection.Connection
     Left = 472
     Top = 192
   end

@@ -2,20 +2,18 @@ object DmConnection: TDmConnection
   OldCreateOrder = False
   Height = 239
   Width = 342
-  object ConnectionSCA: TFDConnection
+  object Connection: TFDConnection
     Params.Strings = (
       'User_Name=SYSDBA'
       'Password=masterkey'
-      'Database=localhost:C:\SCA\bd\SCA.FDB'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 40
     Top = 16
   end
   object tbEmpresa: TFDTable
     IndexFieldNames = 'ID'
-    Connection = ConnectionSCA
+    Connection = Connection
     UpdateOptions.UpdateTableName = 'TB_EMPRESA'
     TableName = 'TB_EMPRESA'
     Left = 96
@@ -49,7 +47,7 @@ object DmConnection: TDmConnection
   end
   object tbTanque: TFDTable
     IndexFieldNames = 'ID'
-    Connection = ConnectionSCA
+    Connection = Connection
     UpdateOptions.UpdateTableName = 'TB_TANQUE'
     TableName = 'TB_TANQUE'
     Left = 176

@@ -39,6 +39,8 @@ implementation
 
 {$R *.dfm}
 
+uses untDMConnection;
+
 procedure TFmList.btnCloseClick(Sender: TObject);
 begin
   Close;

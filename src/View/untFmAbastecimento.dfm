@@ -189,7 +189,7 @@ object FmAbastecimento: TFmAbastecimento
     end
   end
   object qryAbast: TFDQuery
-    Connection = DmConnection.ConnectionSCA
+    Connection = DmConnection.Connection
     SQL.Strings = (
       
         'select a.*, (a.valor +((a.valor * 30) / 100)) as valorfinal, ((a' +

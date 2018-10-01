@@ -15,6 +15,7 @@ object FmList: TFmList
   KeyPreview = True
   OldCreateOrder = False
   Position = poMainFormCenter
+  Visible = True
   WindowState = wsMaximized
   OnClose = FormClose
   OnKeyDown = FormKeyDown
@@ -44,8 +45,6 @@ object FmList: TFmList
     Height = 35
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 423
-    ExplicitWidth = 633
     object btnInsert: TBitBtn
       AlignWithMargins = True
       Left = 321
@@ -55,7 +54,6 @@ object FmList: TFmList
       Align = alRight
       Caption = 'Novo'
       TabOrder = 0
-      ExplicitLeft = 311
     end
     object btnDelete: TBitBtn
       AlignWithMargins = True
@@ -66,7 +64,6 @@ object FmList: TFmList
       Align = alRight
       Caption = 'Excluir'
       TabOrder = 1
-      ExplicitLeft = 473
     end
     object btnClose: TBitBtn
       AlignWithMargins = True
@@ -78,7 +75,6 @@ object FmList: TFmList
       Caption = 'Fechar'
       TabOrder = 2
       OnClick = btnCloseClick
-      ExplicitLeft = 554
     end
     object btnUpdt: TButton
       AlignWithMargins = True
@@ -89,7 +85,6 @@ object FmList: TFmList
       Align = alRight
       Caption = 'Alterar'
       TabOrder = 3
-      ExplicitLeft = 392
     end
   end
   object edtSearch: TEdit
@@ -100,7 +95,6 @@ object FmList: TFmList
     Height = 21
     Align = alTop
     TabOrder = 2
-    ExplicitWidth = 633
   end
   object rdgrpFilter: TRadioGroup
     AlignWithMargins = True
@@ -111,9 +105,9 @@ object FmList: TFmList
     Align = alTop
     Caption = ' Filtro '
     TabOrder = 3
-    ExplicitWidth = 633
   end
   object qryList: TFDQuery
+    Connection = DmConnection.Connection
     Left = 464
     Top = 112
   end

@@ -55,7 +55,6 @@ inherited FmListBomba: TFmListBomba
     ExplicitHeight = 46
   end
   inherited qryList: TFDQuery
-    Connection = DmConnection.ConnectionSCA
     SQL.Strings = (
       'select b.*, t.descricao as tanque from tb_bomba b '
       'left join tb_tanque t on t.id = b.id_tanque')

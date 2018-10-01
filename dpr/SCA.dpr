@@ -23,7 +23,8 @@ uses
   untControl.Forms in '..\src\Controller\Controls\untControl.Forms.pas',
   untControl.Reports in '..\src\Controller\Controls\untControl.Reports.pas',
   untRep.Abastecimento in '..\src\Model\Reports\untRep.Abastecimento.pas',
-  untFmReport.Abastecimento in '..\src\View\Reports\untFmReport.Abastecimento.pas' {FMReportAbastecimento};
+  untFmReport.Abastecimento in '..\src\View\Reports\untFmReport.Abastecimento.pas' {FMReportAbastecimento},
+  untORM in '..\src\Model\Utility\untORM.pas';
 
 {$R *.res}
 

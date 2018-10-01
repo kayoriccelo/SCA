@@ -76,8 +76,8 @@ end;
 
 function TReportAbasteccimento.Print: boolean;
 begin
-  FmReportAbastecimento.RLlblValotTotal.Caption := 'R$ ' + FloatToStr(FValorTotal);
-  FmReportAbastecimento.RLReportAbastecimento.Preview;
+//  FmReportAbastecimento.RLlblValotTotal.Caption := 'R$ ' + FloatToStr(FValorTotal);
+//  FmReportAbastecimento.RLReportAbastecimento.Preview;
 end;
 
 { TReport }

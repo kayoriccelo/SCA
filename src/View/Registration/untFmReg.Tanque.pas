@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, untFmReg, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, untEntity;
+  FireDAC.Comp.Client, untEntity, untORM;
 
 type
   TFmRegTanque = class(TFmReg)
@@ -30,7 +30,7 @@ type
   private
 
   protected
-    function GetObject: TObject; override;
+    function GetObject: TModel; override;
     function Post: Boolean; override;
 
   public
@@ -58,13 +58,13 @@ begin
   DmConnection.tbEmpresa.Open();
 end;
 
-function TFmRegTanque.GetObject: TObject;
+function TFmRegTanque.GetObject: TModel;
 var
   loBREmpresa: TBREmpresa;
 begin
   try
     Result := TTanque.Create;
-    loBREmpresa := TBREmpresa.Create;
+    loBREmpresa := TBREmpresa.Create(TEmpresa);
 
     with TTanque(Result) do
     begin
@@ -85,7 +85,7 @@ var
   loBRTanque: TBRTanque;
 begin
   try
-    loBRTanque := TBRTanque.Create;
+    loBRTanque := TBRTanque.Create(TTanque);
 
     case typecrud of
       etcdInsert:

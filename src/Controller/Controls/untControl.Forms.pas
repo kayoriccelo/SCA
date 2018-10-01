@@ -164,8 +164,8 @@ begin
             eregTanque:
               begin
                 try
-                  loBR := TBRBomba.Create;
-                  TBRBomba(loBR).delete(AIndex);
+                  loBR := TBRTanque.Create;
+                  TBRTanque(loBR).delete(AIndex);
                 finally
                   FreeAndNil(loBR);
                 end;

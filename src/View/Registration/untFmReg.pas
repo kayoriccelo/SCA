@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls,
   untEnumerator, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  untORM;
 
 type
   TFmReg = class(TForm)
@@ -25,7 +26,7 @@ type
     FIndex: Integer;
 
   protected
-    function GetObject: TObject; virtual; abstract;
+    function GetObject: TModel; virtual; abstract;
     function Post: Boolean; virtual; abstract;
     function Cancel: Boolean; virtual;
 
@@ -40,7 +41,7 @@ var
 implementation
 
 uses
-  untFmList;
+  untFmList, untDMConnection;
 
 {$R *.dfm}
 

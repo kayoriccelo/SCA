@@ -62,7 +62,7 @@ var
 
 begin
   try
-    loBRAbast := TBRAbastecimento.Create;
+    loBRAbast := TBRAbastecimento.Create(TAbastecimento);
 
     loBRAbast.delete(qryAbastID.Value);
 

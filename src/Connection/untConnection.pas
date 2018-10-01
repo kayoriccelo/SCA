@@ -31,12 +31,12 @@ function TConnection.Connected(ATypeConnection: eTypeConnection): Boolean;
 begin
   try
 
-    with DmConnection.ConnectionSCA do
+    with DmConnection.Connection do
     begin
       case ATypeConnection of
         etcFireBird:
           begin
-            Connected := False;
+            DriverName := 'FB';
             Params.Database := 'localhost:C:\SCA\bd\SCA.FDB';
             Params.UserName := 'SYSDBA';
             Params.Password := 'masterkey';
@@ -48,7 +48,7 @@ begin
 
   except
     on E: Exception do
-      raise Exception.Create('Error ao conectar banco de dados.' + #13 + E.message);
+      raise Exception.create('Error ao conectar banco de dados.' + #13 + E.message);
   end;
 end;
 

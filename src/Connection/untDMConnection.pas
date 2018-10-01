@@ -9,7 +9,7 @@ uses
 
 type
   TDmConnection = class(TDataModule)
-    ConnectionSCA: TFDConnection;
+    Connection: TFDConnection;
     tbEmpresa: TFDTable;
     tbTanque: TFDTable;
     tbEmpresaID: TIntegerField;

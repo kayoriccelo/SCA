@@ -46,7 +46,6 @@ inherited FmListEmpresa: TFmListEmpresa
     ExplicitHeight = 46
   end
   inherited qryList: TFDQuery
-    Connection = DmConnection.ConnectionSCA
     SQL.Strings = (
       'select * from tb_empresa')
     object qryListID: TIntegerField
