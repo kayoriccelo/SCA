@@ -1,5 +1,5 @@
 unit untEntity;
-
+
 interface
 
 uses
@@ -174,4 +174,4 @@ begin
 end;
 
 end.
-
+
